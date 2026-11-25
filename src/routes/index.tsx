@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Code2, Video, Sparkles, Mail } from "lucide-react";
 
 import logoAsset from "@/assets/codecontenu-logo.jpg.asset.json";
+import videoAsset from "@/assets/codecontenu_presentation.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,12 +23,33 @@ const socials = [
   { name: "Instagram", handle: "@codecontenu", url: "https://www.instagram.com/codecontenu/" },
   { name: "TikTok", handle: "@codecontenu", url: "https://www.tiktok.com/@codecontenu" },
   { name: "YouTube", handle: "@codecontenu", url: "https://www.youtube.com/@codecontenu" },
-  { name: "GitHub", handle: "codecontenu", url: "https://github.com/codecontenu" },
+  { name: "Facebook", handle: "IAF Plateforms", url: "https://www.facebook.com/IAFPLATEFORMS" },
+  { name: "GitHub", handle: "asraaznarulrich-glitch", url: "https://github.com/asraaznarulrich-glitch" },
 ];
 const videos = [
   "Coder une app en 10 minutes",
   "3 outils gratuits pour développeurs",
   "Mon setup de créateur-dev",
+];
+const steps = [
+  { t: "Comprendre avant de coder", d: "On parle de ton idée, de ta cible et de ce que le site doit vraiment faire pour toi.", tag: "idee.codecontenu" },
+  { t: "Livré par étapes", d: "Une première version en ligne rapidement, puis des améliorations validées ensemble.", tag: "sprint.codecontenu" },
+  { t: "Montré au monde", d: "Je peux présenter ton projet en vidéo à ma communauté pour lui donner de la visibilité.", tag: "reel.codecontenu" },
+];
+const projects = [
+  { type: "Site vitrine", t: "Une idée, un site", r: "Concept présenté en vidéo" },
+  { type: "Application web", t: "IAF Plateforms", r: "Communauté et plateforme" },
+  { type: "Open source", t: "Projets GitHub", r: "Code partagé publiquement", url: "https://github.com/asraaznarulrich-glitch" },
+];
+const stats = [
+  { n: "1 idée", l: "= 1 site en ligne" },
+  { n: "100%", l: "code sur mesure" },
+  { n: "3+", l: "réseaux actifs" },
+];
+const faq = [
+  { q: "Combien de temps pour créer un site ?", r: "Une première version peut être prête en quelques jours selon la taille du projet." },
+  { q: "Tu peux parler de ma marque dans tes vidéos ?", r: "Oui, si ton produit parle à ma communauté tech et créative. Écris-moi pour en discuter." },
+  { q: "Tu travailles à distance ?", r: "Oui, je travaille avec des clients partout, en ligne." },
 ];
 const services = [
   { icon: Code2, t: "Développement web", d: "Sites, apps et outils sur mesure, rapides et soignés." },
@@ -51,6 +73,7 @@ function Index() {
         </Link>
         <div className="flex gap-6 text-muted-foreground">
           <a href="#videos" className="hover:text-primary">vidéos</a>
+          <a href="#projets" className="hidden hover:text-primary sm:inline">projets</a>
           <a href="#services" className="hover:text-primary">services</a>
           <a href="#liens" className="hover:text-primary">liens</a>
         </div>
@@ -83,6 +106,57 @@ function Index() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-6 py-12">
+        <p className="font-mono text-sm text-primary">// présentation</p>
+        <h2 className="font-display mt-2 text-4xl">Une idée, un site</h2>
+        <div className="mt-8 overflow-hidden rounded-3xl border-2 border-foreground bg-card shadow-[8px_8px_0_var(--color-primary)]">
+          <video src={videoAsset.url} controls playsInline preload="metadata" className="aspect-video w-full bg-muted" />
+        </div>
+        <ul className="mt-10 grid gap-4 sm:grid-cols-3">
+          {stats.map((s) => (
+            <li key={s.l} className="rounded-2xl border border-border p-6">
+              <p className="font-display text-4xl text-primary">{s.n}</p>
+              <p className="mt-1 text-muted-foreground">{s.l}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <h2 className="font-display text-4xl">Trois règles pour un site qui sert vraiment</h2>
+        <ol className="mt-8 grid gap-6 md:grid-cols-3">
+          {steps.map((st, i) => (
+            <li key={st.t} className="rounded-2xl border-2 border-foreground bg-card p-6">
+              <span className="font-mono text-xs text-muted-foreground">{st.tag}</span>
+              <p className="font-display mt-4 text-5xl text-primary">0{i + 1}</p>
+              <h3 className="font-display mt-2 text-2xl">{st.t}</h3>
+              <p className="mt-2 text-muted-foreground">{st.d}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="projets" className="mx-auto max-w-6xl px-6 py-16">
+        <h2 className="font-display text-4xl">Réalisations & projets</h2>
+        <ul className="mt-8 grid gap-6 md:grid-cols-3">
+          {projects.map((p) => (
+            <li key={p.t} className="flex flex-col rounded-2xl bg-muted p-6">
+              <span className="w-fit rounded-full bg-background px-3 py-1 font-mono text-xs">{p.type}</span>
+              <h3 className="font-display mt-6 text-2xl">{p.t}</h3>
+              <p className="mt-1 text-muted-foreground">| {p.r}</p>
+              {p.url && <a href={p.url} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm text-primary">Découvrir <ArrowUpRight className="size-4" /></a>}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <h2 className="font-display text-4xl">Sur YouTube</h2>
+        <div className="mt-8 overflow-hidden rounded-3xl border border-border">
+          <iframe className="aspect-video w-full" src="https://www.youtube.com/embed/zb-OjhA8exE" title="Vidéo YouTube de Codecontenu" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen loading="lazy" />
+        </div>
+      </section>
+
       <section id="videos" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="font-display text-4xl">Mes vidéos</h2>
         <p className="mt-2 text-muted-foreground">Le reste se passe sur Instagram et TikTok.</p>
@@ -110,6 +184,18 @@ function Index() {
           ))}
         </ol>
         <a href={`mailto:${EMAIL}?subject=Projet`} className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground"><Mail className="size-4" /> M'écrire pour un projet</a>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <h2 className="font-display text-4xl">Questions fréquentes</h2>
+        <div className="mt-8 divide-y divide-border border-y border-border">
+          {faq.map((f) => (
+            <details key={f.q} className="group py-5">
+              <summary className="font-display cursor-pointer text-xl group-open:text-primary">{f.q}</summary>
+              <p className="mt-2 text-muted-foreground">{f.r}</p>
+            </details>
+          ))}
+        </div>
       </section>
 
       <section id="liens" className="mx-auto max-w-6xl px-6 py-16">
