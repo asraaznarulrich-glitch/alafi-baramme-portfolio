@@ -1,5 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Code2, Video, Sparkles, Mail } from "lucide-react";
+
+import logoAsset from "@/assets/codecontenu-logo.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,7 +39,16 @@ function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 font-mono text-sm">
-        <span className="font-bold">&lt;codecontenu /&gt;</span>
+        <Link to="/" className="flex items-center gap-3">
+          <span className="size-10 shrink-0 overflow-hidden rounded-xl border-2 border-foreground shadow-[3px_3px_0_var(--color-primary)]">
+            <img
+              src={logoAsset.url}
+              alt="Logo Codecontenu : cœur en boucle bleu et violet"
+              className="size-full object-cover"
+            />
+          </span>
+          <span className="font-bold">codecontenu</span>
+        </Link>
         <div className="flex gap-6 text-muted-foreground">
           <a href="#videos" className="hover:text-primary">vidéos</a>
           <a href="#services" className="hover:text-primary">services</a>
@@ -115,7 +126,12 @@ function Index() {
         </ul>
       </section>
 
-      <footer className="mx-auto max-w-6xl px-6 py-10 font-mono text-sm text-muted-foreground">© 2026 Alafi Baramme · Codecontenu</footer>
+      <footer className="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-6 py-10 font-mono text-sm text-muted-foreground">
+        <span className="size-8 shrink-0 overflow-hidden rounded-lg border-2 border-foreground shadow-[2px_2px_0_var(--color-primary)]">
+          <img src={logoAsset.url} alt="" className="size-full object-cover" />
+        </span>
+        <span>© 2026 Alafi Baramme · Codecontenu</span>
+      </footer>
     </main>
   );
 }
