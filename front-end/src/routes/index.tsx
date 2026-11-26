@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { ArrowUpRight, Code2, Video, Sparkles, Mail } from "lucide-react";
 
 import logoAsset from "@/assets/codecontenu-logo.jpg.asset.json";
 import videoAsset from "@/assets/codecontenu_presentation.mp4.asset.json";
+import { checkApiHealth } from "@/lib/api";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -90,6 +92,17 @@ const services = [
 ];
 
 function Index() {
+  const [apiOnline, setApiOnline] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    checkApiHealth(controller.signal)
+      .then((health) => setApiOnline(health.status === "ok"))
+      .catch(() => setApiOnline(false));
+
+    return () => controller.abort();
+  }, []);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 font-mono text-sm">
@@ -120,6 +133,10 @@ function Index() {
           </h1>
           <p className="mt-6 max-w-md text-lg text-muted-foreground">
             Je code, je filme, et je te partage tout ce qu'il faut pour faire pareil.
+          </p>
+          <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 font-mono text-xs text-muted-foreground" aria-live="polite">
+            <span className={`size-2 rounded-full ${apiOnline === null ? "bg-muted-foreground" : apiOnline ? "bg-green-500" : "bg-destructive"}`} />
+            {apiOnline === null ? "Connexion au backend..." : apiOnline ? "Backend connecté" : "Backend temporairement indisponible"}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#videos" className="rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground">Voir mes vidéos</a>
