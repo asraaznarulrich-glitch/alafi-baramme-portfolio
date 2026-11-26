@@ -83,12 +83,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Alafi Baramme — Codecontenu" },
       { name: "description", content: "Portfolio d'Alafi Baramme, créateur de contenu et développeur." },
-      { name: "author", content: "Lovable" },
+      { name: "author", content: "Codecontenu" },
       { property: "og:title", content: "Alafi Baramme — Codecontenu" },
       { property: "og:description", content: "Portfolio d'Alafi Baramme, créateur de contenu et développeur." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "theme-color", content: "#f7f8ff" },
     ],
     links: [
       {
@@ -97,7 +97,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono&family=Space+Grotesk:wght@400;500;700&display=swap" },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "icon", type: "image/svg+xml", href: "/codecontenu-logo.svg" },
     ],
   }),
   shellComponent: RootShell,
