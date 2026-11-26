@@ -1,4 +1,5 @@
 [build]
+  base = "front-end"
   command = "bun run build"
-  # Nitro's Netlify preset writes static assets to `dist` and the SSR function to `.netlify/functions-internal`
+  # Nitro's Netlify preset writes static assets to dist and the SSR function to .netlify/functions-internal.
   publish = "dist"
