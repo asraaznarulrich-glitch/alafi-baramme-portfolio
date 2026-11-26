@@ -8,9 +8,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Alafi Baramme — Créateur de contenu & développeur" },
-      { name: "description", content: "Portfolio d'Alafi Baramme (Codecontenu) : vidéos, code et projets web." },
+      { name: "description", content: "Portfolio d'Alafi Baramme (Codecontenu) : vidéos, code, et les apps Orbitacle et LivingArch." },
       { property: "og:title", content: "Alafi Baramme — Codecontenu" },
-      { property: "og:description", content: "Je crée du contenu et je code. Portfolio, vidéos et projets." },
+      { property: "og:description", content: "Créateur de contenu et développeur : vidéos, cours en ligne et projets web (Orbitacle, LivingArch)." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -19,6 +19,7 @@ export const Route = createFileRoute("/")({
 });
 
 const EMAIL = "contact@codecontenu.com";
+const GITHUB = "https://github.com/asraaznarulrich-glitch";
 const CHANNEL = "https://youtube.com/@codecontenu";
 const REEL = "https://www.facebook.com/share/r/1DuzDqNbik/";
 const STORE = "https://codecontenu.mychariow.store/";
@@ -29,7 +30,7 @@ const socials = [
   { name: "Facebook", handle: "IAF Plateforms", url: "https://www.facebook.com/IAFPLATEFORMS" },
   { name: "Reel Facebook", handle: "reel récent", url: REEL },
   { name: "Boutique", handle: "cours en ligne", url: STORE },
-  { name: "GitHub", handle: "asraaznarulrich-glitch", url: "https://github.com/asraaznarulrich-glitch" },
+  { name: "GitHub", handle: "asraaznarulrich-glitch", url: GITHUB },
 ];
 const videos = [
   "Coder une app en 10 minutes",
@@ -41,15 +42,41 @@ const steps = [
   { t: "Livré par étapes", d: "Une première version en ligne rapidement, puis des améliorations validées ensemble.", tag: "sprint.codecontenu" },
   { t: "Montré au monde", d: "Je peux présenter ton projet en vidéo à ma communauté pour lui donner de la visibilité.", tag: "reel.codecontenu" },
 ];
-const projects = [
-  { type: "Site vitrine", t: "Une idée, un site", r: "Concept présenté en vidéo" },
-  { type: "Application web", t: "IAF Plateforms", r: "Communauté et plateforme" },
-  { type: "Open source", t: "Projets GitHub", r: "Code partagé publiquement", url: "https://github.com/asraaznarulrich-glitch" },
+type Project = {
+  type: string;
+  t: string;
+  r: string;
+  d: string;
+  url: string;
+  host: string;
+  tags: string[];
+  video?: string;
+};
+const projects: Project[] = [
+  {
+    type: "Application web",
+    t: "Orbitacle",
+    r: "Tâches et équipe suivies au même endroit",
+    d: "Une app pour suivre les tâches de chacun, voir l'équipe en un coup d'œil et garder le cap sur ce qui compte.",
+    url: "https://orbitacle.base44.app",
+    host: "orbitacle.base44.app",
+    tags: ["Tâches", "Équipe", "Paramètres"],
+    video: "#presentation",
+  },
+  {
+    type: "Site d'atelier",
+    t: "LivingArch",
+    r: "Un atelier d'architecture en ligne",
+    d: "Site d'un atelier d'architecture : archive de projets, exploration par terrain, chiffres clés et prise de contact.",
+    url: "https://livingarch.base44.app",
+    host: "livingarch.base44.app",
+    tags: ["Archive", "Terrains", "Contact"],
+  },
 ];
 const stats = [
-  { n: "1 idée", l: "= 1 site en ligne" },
+  { n: "2 apps", l: "en ligne aujourd'hui" },
   { n: "100%", l: "code sur mesure" },
-  { n: "3+", l: "réseaux actifs" },
+  { n: "4", l: "réseaux actifs" },
 ];
 const faq = [
   { q: "Combien de temps pour créer un site ?", r: "Une première version peut être prête en quelques jours selon la taille du projet." },
@@ -112,7 +139,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-12">
+      <section id="presentation" className="mx-auto max-w-6xl px-6 py-12">
         <p className="font-mono text-sm text-primary">// présentation</p>
         <h2 className="font-display mt-2 text-4xl">Une idée, un site</h2>
         <div className="mt-8 overflow-hidden rounded-3xl border-2 border-foreground bg-card shadow-[8px_8px_0_var(--color-primary)]">
@@ -143,17 +170,32 @@ function Index() {
       </section>
 
       <section id="projets" className="mx-auto max-w-6xl px-6 py-16">
-        <h2 className="font-display text-4xl">Réalisations & projets</h2>
-        <ul className="mt-8 grid gap-6 md:grid-cols-3">
+        <p className="font-mono text-sm text-primary">// réalisations</p>
+        <h2 className="font-display mt-2 text-4xl">Réalisations & projets</h2>
+        <p className="mt-2 max-w-lg text-muted-foreground">Deux apps que j'ai conçues et mises en ligne.</p>
+        <ul className="mt-8 grid gap-6 md:grid-cols-2">
           {projects.map((p) => (
-            <li key={p.t} className="flex flex-col rounded-2xl bg-muted p-6">
+            <li key={p.t} className="flex flex-col rounded-2xl border-2 border-foreground bg-card p-6 shadow-[8px_8px_0_var(--color-primary)]">
               <span className="w-fit rounded-full bg-background px-3 py-1 font-mono text-xs">{p.type}</span>
-              <h3 className="font-display mt-6 text-2xl">{p.t}</h3>
-              <p className="mt-1 text-muted-foreground">| {p.r}</p>
-              {p.url && <a href={p.url} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm text-primary">Découvrir <ArrowUpRight className="size-4" /></a>}
+              <h3 className="font-display mt-6 text-3xl">{p.t}</h3>
+              <p className="mt-1 text-primary">| {p.r}</p>
+              <p className="mt-3 text-muted-foreground">{p.d}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {p.tags.map((t) => (
+                  <span key={t} className="rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground">{t}</span>
+                ))}
+              </div>
+              <div className="mt-auto pt-6">
+                <p className="break-all border-t border-border pt-4 font-mono text-xs text-muted-foreground">{p.host}</p>
+                <div className="mt-4 flex flex-wrap items-center gap-5">
+                  <a href={p.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 font-medium text-primary-foreground">Voir le site <ArrowUpRight className="size-4" /></a>
+                  {p.video && <a href={p.video} className="inline-flex items-center gap-1 text-sm text-primary">Vidéo explicative <ArrowUpRight className="size-4" /></a>}
+                </div>
+              </div>
             </li>
           ))}
         </ul>
+        <a href={GITHUB} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-1 text-sm text-primary">Plus de code sur GitHub <ArrowUpRight className="size-4" /></a>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16">
