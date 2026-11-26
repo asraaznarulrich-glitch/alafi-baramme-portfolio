@@ -137,7 +137,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .video-copy > p:not(.section-kicker) { max-width: 390px; margin: 20px 0 25px; color: #bdc3dc; font-size: 15px; line-height: 1.8; }
 .video-copy .text-link { color: #c4c7ff; }
 .video-frame { overflow: hidden; border: 1px solid rgba(255,255,255,.15); border-radius: 18px; background: #0c1128; box-shadow: 0 24px 60px rgba(0,0,0,.2); }
-.presentation-video { display: block; width: 100%; aspect-ratio: 16/9; background: #0c1128; object-fit: contain; }
+.presentation-video { display: block; width: 100%; aspect-ratio: 16/9; border: 0; background: #0c1128; object-fit: contain; }
 .services-section { background: #fff; }
 .service-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 35px; }
 .service-item { position: relative; padding: 25px 20px 22px 0; border-top: 1px solid #e6e9f2; }
