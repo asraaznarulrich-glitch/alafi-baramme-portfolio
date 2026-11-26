@@ -154,3 +154,160 @@
     color: var(--color-foreground);
   }
 }
+
+
+/* Codecontenu — unified visual system */
+:root {
+  --background: oklch(0.985 0.008 265);
+  --foreground: oklch(0.22 0.035 270);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.035 270);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.035 270);
+  --primary: oklch(0.53 0.22 276);
+  --primary-foreground: oklch(0.99 0.004 260);
+  --secondary: oklch(0.94 0.025 275);
+  --secondary-foreground: oklch(0.25 0.04 275);
+  --muted: oklch(0.955 0.014 270);
+  --muted-foreground: oklch(0.51 0.035 270);
+  --accent: oklch(0.88 0.07 295);
+  --accent-foreground: oklch(0.25 0.04 275);
+  --border: oklch(0.9 0.025 270);
+  --input: oklch(0.9 0.025 270);
+  --ring: oklch(0.53 0.22 276);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+.site-shell {
+  min-height: 100vh;
+  overflow-x: clip;
+  background:
+    radial-gradient(ellipse at 8% 5%, rgba(89, 91, 235, .08), transparent 32rem),
+    radial-gradient(ellipse at 94% 28%, rgba(135, 82, 224, .07), transparent 28rem),
+    var(--background);
+}
+.site-shell > nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  padding: 14px max(24px, calc((100vw - 1120px) / 2));
+  border-bottom: 1px solid rgba(91, 87, 160, .12);
+  background: rgba(250, 250, 255, .88);
+  backdrop-filter: blur(18px);
+}
+.site-shell > nav > a { min-width: max-content; }
+.site-shell > nav img,
+.site-shell footer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.site-shell > section {
+  width: min(1120px, calc(100% - 48px));
+  max-width: 1120px;
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding: clamp(48px, 7vw, 88px) 0;
+}
+.site-shell > section:first-of-type {
+  min-height: min(680px, calc(100vh - 72px));
+  padding-block: clamp(64px, 9vw, 112px);
+  gap: clamp(36px, 7vw, 88px);
+}
+.site-shell > section:first-of-type h1 {
+  max-width: 720px;
+  letter-spacing: -.045em;
+  line-height: 1.04;
+}
+.site-shell > section:first-of-type > div:nth-child(2) {
+  transform: none !important;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--border) !important;
+  border-radius: 30px;
+  background: linear-gradient(145deg, rgba(83, 96, 238, .09), rgba(148, 87, 224, .08)), white;
+  padding: clamp(16px, 3vw, 28px);
+  box-shadow: 0 24px 70px rgba(54, 54, 130, .12) !important;
+}
+.site-shell h2,
+.site-shell h3 { letter-spacing: -.025em; }
+.site-shell h2 { line-height: 1.12; }
+.site-shell [class*="shadow-"] {
+  box-shadow: 0 12px 34px rgba(54, 54, 130, .075) !important;
+}
+.site-shell [class*="border-2"] {
+  border-width: 1px !important;
+  border-color: var(--border) !important;
+}
+.site-shell [class*="rotate-"] { transform: none !important; }
+.site-shell video,
+.site-shell iframe {
+  display: block;
+  border-radius: 18px;
+}
+.site-shell section > ul,
+.site-shell section > ol {
+  align-items: stretch;
+}
+.site-shell section li {
+  min-width: 0;
+}
+.site-shell a {
+  text-underline-offset: 4px;
+  transition: color .18s ease, background-color .18s ease, border-color .18s ease, transform .18s ease;
+}
+.site-shell a:focus-visible,
+.site-shell summary:focus-visible {
+  outline: 3px solid rgba(91, 82, 230, .5);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+.site-shell footer {
+  width: min(1120px, calc(100% - 48px));
+  margin-inline: auto;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 640px) {
+  .site-shell > nav {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 20px;
+  }
+  .site-shell > nav > div:last-child {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    font-size: 12px;
+  }
+  .site-shell > section {
+    width: calc(100% - 40px);
+    padding-block: 48px;
+  }
+  .site-shell > section:first-of-type {
+    min-height: auto;
+    padding-block: 56px 44px;
+  }
+  .site-shell > section:first-of-type h1 {
+    font-size: clamp(2.65rem, 12vw, 4rem);
+  }
+  .site-shell > section:first-of-type > div:nth-child(2) {
+    width: 100%;
+    max-width: 360px;
+    margin-inline: auto;
+  }
+  .site-shell footer {
+    width: calc(100% - 40px);
+  }
+}
