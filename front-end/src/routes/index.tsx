@@ -166,14 +166,14 @@ function Index() {
             <a href={CHANNEL} target="_blank" rel="noreferrer" className="text-link">Retrouver mes vidéos <ArrowUpRight size={17} /></a>
           </div>
           <div className="video-frame">
-            <iframe
+            <video
+              src="/videos/codecontenu-presentation.mp4"
+              controls
+              playsInline
+              preload="metadata"
               className="presentation-video"
-              src={"https://www.facebook.com/plugins/video.php?href=" + encodeURIComponent(REEL) + "&show_text=false&width=1280"}
-              title="Vidéo de présentation Codecontenu"
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-            />
+              aria-label="Vidéo de présentation Codecontenu"
+            />>
           </div>
         </div>
       </section>
