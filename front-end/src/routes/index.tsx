@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Code2, Video, Sparkles, Mail } from "lucide-react";
 
-import logoAsset from "@/assets/codecontenu-logo.jpg.asset.json";
 import videoAsset from "@/assets/codecontenu_presentation.mp4.asset.json";
 import { checkApiHealth } from "@/lib/api";
 
@@ -104,12 +103,12 @@ function Index() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="site-shell min-h-screen bg-background text-foreground">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 font-mono text-sm">
         <Link to="/" className="flex items-center gap-3">
           <span className="size-10 shrink-0 overflow-hidden rounded-xl border-2 border-foreground shadow-[3px_3px_0_var(--color-primary)]">
             <img
-              src={logoAsset.url}
+              src="/codecontenu-logo.svg"
               alt="Logo Codecontenu : cœur en boucle bleu et violet"
               className="size-full object-cover"
             />
@@ -294,7 +293,7 @@ function Index() {
 
       <footer className="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-6 py-10 font-mono text-sm text-muted-foreground">
         <span className="size-8 shrink-0 overflow-hidden rounded-lg border-2 border-foreground shadow-[2px_2px_0_var(--color-primary)]">
-          <img src={logoAsset.url} alt="" className="size-full object-cover" />
+          <img src="/codecontenu-logo.svg" alt="" className="size-full object-cover" />
         </span>
         <span>© 2026 Alafi Baramme · Codecontenu</span>
       </footer>
