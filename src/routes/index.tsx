@@ -19,11 +19,16 @@ export const Route = createFileRoute("/")({
 });
 
 const EMAIL = "contact@codecontenu.com";
+const CHANNEL = "https://youtube.com/@codecontenu";
+const REEL = "https://www.facebook.com/share/r/1DuzDqNbik/";
+const STORE = "https://codecontenu.mychariow.store/";
 const socials = [
   { name: "Instagram", handle: "@codecontenu", url: "https://www.instagram.com/codecontenu/" },
   { name: "TikTok", handle: "@codecontenu", url: "https://www.tiktok.com/@codecontenu" },
-  { name: "YouTube", handle: "@codecontenu", url: "https://www.youtube.com/@codecontenu" },
+  { name: "YouTube", handle: "@codecontenu", url: CHANNEL },
   { name: "Facebook", handle: "IAF Plateforms", url: "https://www.facebook.com/IAFPLATEFORMS" },
+  { name: "Reel Facebook", handle: "reel récent", url: REEL },
+  { name: "Boutique", handle: "cours en ligne", url: STORE },
   { name: "GitHub", handle: "asraaznarulrich-glitch", url: "https://github.com/asraaznarulrich-glitch" },
 ];
 const videos = [
@@ -75,6 +80,7 @@ function Index() {
           <a href="#videos" className="hover:text-primary">vidéos</a>
           <a href="#projets" className="hidden hover:text-primary sm:inline">projets</a>
           <a href="#services" className="hover:text-primary">services</a>
+          <a href="#boutique" className="hidden hover:text-primary sm:inline">boutique</a>
           <a href="#liens" className="hover:text-primary">liens</a>
         </div>
       </nav>
@@ -155,11 +161,17 @@ function Index() {
         <div className="mt-8 overflow-hidden rounded-3xl border border-border">
           <iframe className="aspect-video w-full" src="https://www.youtube.com/embed/zb-OjhA8exE" title="Vidéo YouTube de Codecontenu" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen loading="lazy" />
         </div>
+        <a href={CHANNEL} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-1 text-sm text-primary">Voir toute la chaîne <ArrowUpRight className="size-4" /></a>
       </section>
 
       <section id="videos" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="font-display text-4xl">Mes vidéos</h2>
         <p className="mt-2 text-muted-foreground">Le reste se passe sur Instagram et TikTok.</p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a href={REEL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 font-mono text-sm hover:border-primary hover:text-primary">Reel sur Facebook <ArrowUpRight className="size-4" /></a>
+          <a href={CHANNEL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 font-mono text-sm hover:border-primary hover:text-primary">Chaîne YouTube <ArrowUpRight className="size-4" /></a>
+          <a href={STORE} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 font-mono text-sm hover:border-primary hover:text-primary">Boutique <ArrowUpRight className="size-4" /></a>
+        </div>
         <ul className="mt-8 grid gap-6 md:grid-cols-3">
           {videos.map((v, i) => (
             <li key={v} className="group flex aspect-[9/14] flex-col justify-end rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-primary">
@@ -184,6 +196,15 @@ function Index() {
           ))}
         </ol>
         <a href={`mailto:${EMAIL}?subject=Projet`} className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground"><Mail className="size-4" /> M'écrire pour un projet</a>
+      </section>
+
+      <section id="boutique" className="mx-auto max-w-6xl px-6 py-16">
+        <div className="rounded-3xl border-2 border-foreground bg-primary p-8 text-primary-foreground shadow-[8px_8px_0_var(--color-foreground)] md:p-12">
+          <p className="font-mono text-sm opacity-80">// boutique</p>
+          <h2 className="font-display mt-2 text-4xl">Boutique Codecontenu</h2>
+          <p className="mt-3 max-w-lg opacity-90">Mes cours de programmation en ligne : pour coder plus vite et mieux.</p>
+          <a href={STORE} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 font-medium text-foreground">Voir les cours <ArrowUpRight className="size-4" /></a>
+        </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16">
