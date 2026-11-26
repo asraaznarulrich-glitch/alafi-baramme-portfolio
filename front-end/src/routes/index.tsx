@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Code2, Video, Sparkles, Mail, Github, Instagram, Youtube } from "lucide-react";
 
-import videoAsset from "@/assets/codecontenu_presentation.mp4.asset.json";
 import { checkApiHealth } from "@/lib/api";
 
 export const Route = createFileRoute("/")({
@@ -167,7 +166,14 @@ function Index() {
             <a href={CHANNEL} target="_blank" rel="noreferrer" className="text-link">Retrouver mes vidéos <ArrowUpRight size={17} /></a>
           </div>
           <div className="video-frame">
-            <video src={videoAsset.url} controls playsInline preload="metadata" className="presentation-video" aria-label="Vidéo de présentation Codecontenu" />
+            <iframe
+              className="presentation-video"
+              src={"https://www.facebook.com/plugins/video.php?href=" + encodeURIComponent(REEL) + "&show_text=false&width=1280"}
+              title="Vidéo de présentation Codecontenu"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
