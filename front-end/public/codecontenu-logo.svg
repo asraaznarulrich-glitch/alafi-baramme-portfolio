@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs>
+ <linearGradient id="g" x1="80" y1="90" x2="430" y2="420" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#3977f4"/><stop offset=".52" stop-color="#3849e8"/><stop offset="1" stop-color="#8245d9"/>
+ </linearGradient>
+ <linearGradient id="shine" x1="150" y1="100" x2="350" y2="390" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+ </linearGradient>
+</defs>
+<path d="M256 86c-66-65-171-31-171 66 0 47 25 78 57 111l114 116 90-91c14-14 28-27 40-41 20-24 34-48 34-83 0-60-43-99-94-99-30 0-54 13-70 35-16-22-40-35-70-35"
+ fill="none" stroke="url(#g)" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M256 86c-66-65-171-31-171 66 0 47 25 78 57 111l114 116 90-91c14-14 28-27 40-41 20-24 34-48 34-83 0-60-43-99-94-99-30 0-54 13-70 35"
+ fill="none" stroke="url(#shine)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="url(#g)">
+ <path d="M83 55l7 18 18 7-18 7-7 18-7-18-18-7 18-7z"/>
+ <path d="M421 73l9 23 23 9-23 9-9 23-9-23-23-9 23-9z"/>
+ <path d="M390 402l6 15 15 6-15 6-6 15-6-15-15-6 15-6z"/>
+</g>
+</svg>
