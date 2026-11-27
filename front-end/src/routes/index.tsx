@@ -91,6 +91,14 @@ const questions = [
 function Index() {
   const [apiOnline, setApiOnline] = useState<boolean | null>(null);
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null);
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+
+  useEffect(() => {
+    const rotation = window.setInterval(() => {
+      setActiveProjectIndex((current) => (current + 1) % projects.length);
+    }, 10000);
+    return () => window.clearInterval(rotation);
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -169,19 +177,33 @@ function Index() {
             <div><p className="section-kicker">02 — SÉLECTION DE TRAVAUX</p><h2>Des idées mises en ligne.</h2></div>
             <p>Chaque projet part d’un besoin : présenter une activité, simplifier une organisation ou donner vie à une idée. Explore les réalisations et parlons de la tienne.</p>
           </div>
-          <div className="project-grid">
-            {projects.map((project, index) => (
-              <article className="project-card" key={project.name} style={{ animationDelay: `${index * 100}ms` }}>
-                <div className="project-topline"><span>0{index + 1}</span><span>{project.type}</span></div>
-                <div className="project-symbol">{index === 0 ? <Code2 size={27} /> : index === 1 ? <Sparkles size={27} /> : <Code2 size={27} />}</div>
-                <h3>{project.name}</h3>
-                <p className="project-tagline">{project.tagline}</p>
-                <p className="project-description">{project.description}</p>
-                <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                <div className="project-footer"><span>{project.host}</span><div className="project-actions"><button type="button" className="project-details-button" onClick={() => setSelectedProject(project)}>Découvrir ce projet <ArrowUpRight size={15} /></button><a href={project.url} target="_blank" rel="noreferrer">Ouvrir le site <ArrowUpRight size={16} /></a></div></div>
-              </article>
-            ))}
+          <div className="project-deck" aria-label="Cartes des projets, rotation automatique toutes les dix secondes">
+            {projects.map((project, index) => {
+              const relativeIndex = (index - activeProjectIndex + projects.length) % projects.length;
+              const offset = relativeIndex * 13;
+              const rotation = relativeIndex * 1.35;
+              return (
+                <article
+                  className={`project-card project-deck-card${relativeIndex === 0 ? " is-front" : ""}`}
+                  key={project.name}
+                  style={{
+                    zIndex: projects.length - relativeIndex,
+                    transform: `translate3d(${offset}px, ${relativeIndex * 9}px, 0) rotate(${rotation}deg) scale(${1 - relativeIndex * 0.012})`,
+                  }}
+                  aria-hidden={relativeIndex !== 0}
+                >
+                  <div className="project-topline"><span>0{index + 1}</span><span>{project.type}</span></div>
+                  <div className="project-symbol">{index === 0 ? <Code2 size={27} /> : index === 1 ? <Sparkles size={27} /> : <Code2 size={27} />}</div>
+                  <h3>{project.name}</h3>
+                  <p className="project-tagline">{project.tagline}</p>
+                  <p className="project-description">{project.description}</p>
+                  <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                  <div className="project-footer"><span>{project.host}</span><div className="project-actions"><button type="button" className="project-details-button" onClick={() => setSelectedProject(project)} tabIndex={relativeIndex === 0 ? 0 : -1}>Découvrir ce projet <ArrowUpRight size={15} /></button><a href={project.url} target="_blank" rel="noreferrer" tabIndex={relativeIndex === 0 ? 0 : -1}>Ouvrir le site <ArrowUpRight size={16} /></a></div></div>
+                </article>
+              );
+            })}
           </div>
+          <p className="project-deck-hint"><span className="project-deck-indicator" /> Les projets défilent automatiquement toutes les 10 secondes</p>
         </div>
       </section>
 
