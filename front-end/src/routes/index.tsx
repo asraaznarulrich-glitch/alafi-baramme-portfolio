@@ -58,6 +58,24 @@ const projects = [
     host: "joyful-biscotti-4b8889.netlify.app",
     tags: ["Portfolio", "Développement web", "Projet réalisé pour un ami"],
   },
+  {
+    type: "Projet numérique",
+    name: "Tchad Tech",
+    tagline: "Une réalisation numérique signée Codecontenu.",
+    description: "Découvrez Tchad Tech directement sur son site et explorez cette réalisation parmi les projets développés par Codecontenu.",
+    url: "https://tchad-tech.base44.app",
+    host: "tchad-tech.base44.app",
+    tags: ["Projet web", "Base44"],
+  },
+  {
+    type: "Application web",
+    name: "LeftSend",
+    tagline: "Une autre idée mise en ligne.",
+    description: "Découvrez LeftSend directement sur son site et explorez cette réalisation parmi les projets développés par Codecontenu.",
+    url: "https://leftsend.base44.app",
+    host: "leftsend.base44.app",
+    tags: ["Application web", "Base44"],
+  },
 ];
 const services = [
   { Icon: Code2, title: "Développement web", text: "Des sites et applications rapides, accessibles et adaptés à ton activité." },
@@ -137,7 +155,7 @@ function Index() {
             <p>Codecontenu est mon espace de création. J'y rassemble le développement web, l'expérimentation et la pédagogie pour rendre les outils numériques plus accessibles.</p>
             <p>Mon approche : comprendre le besoin, construire une solution claire, puis documenter et partager le chemin.</p>
             <div className="stats-row">
-              <div><strong>03</strong><span>projets présentés</span></div>
+              <div><strong>05</strong><span>projets présentés</span></div>
               <div><strong>03</strong><span>domaines de création</span></div>
               <div><strong>01</strong><span>objectif : créer utile</span></div>
             </div>
