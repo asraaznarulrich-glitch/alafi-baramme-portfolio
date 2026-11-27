@@ -92,6 +92,14 @@ function Index() {
   const [apiOnline, setApiOnline] = useState<boolean | null>(null);
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null);
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const [isMobileDeck, setIsMobileDeck] = useState(false);
+
+  useEffect(() => {
+    const updateDeckSize = () => setIsMobileDeck(window.innerWidth <= 600);
+    updateDeckSize();
+    window.addEventListener("resize", updateDeckSize);
+    return () => window.removeEventListener("resize", updateDeckSize);
+  }, []);
 
   useEffect(() => {
     const rotation = window.setInterval(() => {
@@ -187,8 +195,8 @@ function Index() {
                   className={`project-card project-deck-card${relativeIndex === 0 ? " is-front" : ""}`}
                   key={project.name}
                   style={{
-                    zIndex: relativeIndex + 1,
-                    transform: `translateX(${position * 215}px) translateY(${Math.abs(position) * 5}px) rotate(${position * 4}deg)`,
+                    zIndex: projects.length - relativeIndex,
+                    transform: `translateX(${position * (isMobileDeck ? 48 : 215)}px) translateY(${Math.abs(position) * 5}px) rotate(${position * (isMobileDeck ? 7 : 4)}deg)`,
                   }}
                   aria-hidden={relativeIndex !== 0}
                 >
