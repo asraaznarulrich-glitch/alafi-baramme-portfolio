@@ -149,7 +149,7 @@ function Index() {
         <div className="content-width">
           <div className="section-heading">
             <div><p className="section-kicker">02 — SÉLECTION DE TRAVAUX</p><h2>Des idées mises en ligne.</h2></div>
-            <p>Des projets conçus pour répondre à des besoins concrets, dont des réalisations effectuées pour des clients et des proches.</p>
+            <p>Chaque projet part d’un besoin : présenter une activité, simplifier une organisation ou donner vie à une idée. Explore les réalisations et parlons de la tienne.</p>
           </div>
           <div className="project-grid">
             {projects.map((project, index) => (
@@ -232,6 +232,23 @@ function Index() {
       </section>
 
       <footer className="site-footer"><div className="content-width footer-inner"><Link to="/" className="footer-brand"><img src="/codecontenu-logo.svg" alt="" /> codecontenu.</Link><span>© {new Date().getFullYear()} Alafi Baramme. Tous droits réservés.</span><a href={GITHUB} target="_blank" rel="noreferrer">Code source <ArrowUpRight size={14} /></a></div></footer>
+      {selectedProject && (
+        <div className="project-modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSelectedProject(null); }}>
+          <section className="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+            <button type="button" className="project-modal-close" aria-label="Fermer" onClick={() => setSelectedProject(null)}><X size={20} /></button>
+            <p className="section-kicker">APERÇU DE LA RÉALISATION · {selectedProject.type.toUpperCase()}</p>
+            <h2 id="project-modal-title">{selectedProject.name}</h2>
+            <p className="project-modal-tagline">{selectedProject.tagline}</p>
+            <p className="project-modal-description">{selectedProject.description}</p>
+            <div className="project-modal-label">Compétences et points clés</div>
+            <div className="tag-list">{selectedProject.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+            <div className="project-modal-actions">
+              <a className="button-primary" href={selectedProject.url} target="_blank" rel="noreferrer">Explorer le site <ArrowUpRight size={16} /></a>
+              <a className="button-secondary" href={`mailto:${EMAIL}?subject=${encodeURIComponent("Discutons de mon projet web")}`}>Créer un projet similaire</a>
+            </div>
+          </section>
+        </div>
+      )}
     </main>
   );
 }
