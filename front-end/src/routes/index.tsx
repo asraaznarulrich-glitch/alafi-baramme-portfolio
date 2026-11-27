@@ -49,6 +49,15 @@ const projects = [
     host: "livingarch.base44.app",
     tags: ["Architecture", "Portfolio"],
   },
+  {
+    type: "Portfolio client",
+    name: "Alex Martin",
+    tagline: "Un portfolio clair pour valoriser un parcours informatique.",
+    description: "Un site réalisé pour un ami afin de présenter son profil, ses compétences techniques, ses projets et ses objectifs professionnels.",
+    url: "https://joyful-biscotti-4b8889.netlify.app/",
+    host: "joyful-biscotti-4b8889.netlify.app",
+    tags: ["Portfolio", "Développement web", "Projet réalisé pour un ami"],
+  },
 ];
 const services = [
   { Icon: Code2, title: "Développement web", text: "Des sites et applications rapides, accessibles et adaptés à ton activité." },
@@ -127,7 +136,7 @@ function Index() {
             <p>Codecontenu est mon espace de création. J'y rassemble le développement web, l'expérimentation et la pédagogie pour rendre les outils numériques plus accessibles.</p>
             <p>Mon approche : comprendre le besoin, construire une solution claire, puis documenter et partager le chemin.</p>
             <div className="stats-row">
-              <div><strong>02</strong><span>applications présentées</span></div>
+              <div><strong>03</strong><span>projets présentés</span></div>
               <div><strong>03</strong><span>domaines de création</span></div>
               <div><strong>01</strong><span>objectif : créer utile</span></div>
             </div>
@@ -139,7 +148,7 @@ function Index() {
         <div className="content-width">
           <div className="section-heading">
             <div><p className="section-kicker">02 — SÉLECTION DE TRAVAUX</p><h2>Des idées mises en ligne.</h2></div>
-            <p>Quelques projets numériques conçus pour répondre à des besoins concrets.</p>
+            <p>Des projets conçus pour répondre à des besoins concrets, dont des réalisations effectuées pour des clients et des proches.</p>
           </div>
           <div className="project-grid">
             {projects.map((project, index) => (
@@ -173,7 +182,7 @@ function Index() {
               preload="metadata"
               className="presentation-video"
               aria-label="Vidéo de présentation Codecontenu"
-            />>
+            />
           </div>
         </div>
       </section>
