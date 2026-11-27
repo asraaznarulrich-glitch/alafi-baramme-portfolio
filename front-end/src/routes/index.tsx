@@ -178,7 +178,7 @@ function Index() {
                 <p className="project-tagline">{project.tagline}</p>
                 <p className="project-description">{project.description}</p>
                 <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                <div className="project-footer"><span>{project.host}</span><div className="project-actions"><button type="button" className="project-details-button" onClick={() => setSelectedProject(project)}>Voir les détails <ArrowUpRight size={15} /></button><a href={project.url} target="_blank" rel="noreferrer">Visiter <ArrowUpRight size={16} /></a></div></div>
+                <div className="project-footer"><span>{project.host}</span><div className="project-actions"><button type="button" className="project-details-button" onClick={() => setSelectedProject(project)}>Découvrir ce projet <ArrowUpRight size={15} /></button><a href={project.url} target="_blank" rel="noreferrer">Ouvrir le site <ArrowUpRight size={16} /></a></div></div>
               </article>
             ))}
           </div>
