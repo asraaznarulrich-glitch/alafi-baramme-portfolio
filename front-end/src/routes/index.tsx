@@ -177,18 +177,18 @@ function Index() {
             <div><p className="section-kicker">02 — SÉLECTION DE TRAVAUX</p><h2>Des idées mises en ligne.</h2></div>
             <p>Chaque projet part d’un besoin : présenter une activité, simplifier une organisation ou donner vie à une idée. Explore les réalisations et parlons de la tienne.</p>
           </div>
-          <div className="project-deck" aria-label="Cartes des projets, rotation automatique toutes les dix secondes">
+          <div className="project-deck" aria-label="Éventail des cinq projets, rotation automatique toutes les dix secondes">
             {projects.map((project, index) => {
               const relativeIndex = (index - activeProjectIndex + projects.length) % projects.length;
-              const offset = relativeIndex * 13;
-              const rotation = relativeIndex * 1.35;
+              const center = (projects.length - 1) / 2;
+              const position = relativeIndex - center;
               return (
                 <article
                   className={`project-card project-deck-card${relativeIndex === 0 ? " is-front" : ""}`}
                   key={project.name}
                   style={{
-                    zIndex: projects.length - relativeIndex,
-                    transform: `translate3d(${offset}px, ${relativeIndex * 9}px, 0) rotate(${rotation}deg) scale(${1 - relativeIndex * 0.012})`,
+                    zIndex: relativeIndex + 1,
+                    transform: `translateX(calc(${position} * var(--fan-step))) translateY(calc(abs(${position}) * 5px)) rotate(${position * 5}deg)`,
                   }}
                   aria-hidden={relativeIndex !== 0}
                 >
