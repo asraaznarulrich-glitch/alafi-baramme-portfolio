@@ -254,20 +254,32 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .project-card:focus-within::before { transform: scaleX(1); }
 .project-card:hover .project-symbol { transform: translateY(-3px) rotate(-4deg); background: #e6e8ff; }
 .project-symbol { transition: transform .25s ease, background .25s ease; }
-.project-actions { display: flex; align-items: center; gap: 15px; }
-.project-details-button {
+.project-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.project-details-button,
+.project-footer .project-actions a {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: #727b91;
-  font: 600 12px "Space Grotesk", sans-serif;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid #dfe2f5;
+  border-radius: 999px;
+  background: #f5f6ff;
+  color: #5159df;
+  font: 700 12px "Space Grotesk", sans-serif;
   cursor: pointer;
-  transition: color .2s ease;
+  text-decoration: none;
+  transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
-.project-details-button:hover { color: #5159df; }
+.project-details-button:hover,
+.project-footer .project-actions a:hover {
+  color: #fff;
+  background: #5159df;
+  border-color: #5159df;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(81,89,223,.2);
+}
 .project-footer a { white-space: nowrap; }
 .project-details-button:focus-visible,
 .project-footer a:focus-visible,
