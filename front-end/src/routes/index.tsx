@@ -104,7 +104,7 @@ function Index() {
   useEffect(() => {
     const rotation = window.setInterval(() => {
       setActiveProjectIndex((current) => (current + 1) % projects.length);
-    }, 10000);
+    }, 5000);
     return () => window.clearInterval(rotation);
   }, []);
 
@@ -185,7 +185,7 @@ function Index() {
             <div><p className="section-kicker">02 — SÉLECTION DE TRAVAUX</p><h2>Des idées mises en ligne.</h2></div>
             <p>Chaque projet part d’un besoin : présenter une activité, simplifier une organisation ou donner vie à une idée. Explore les réalisations et parlons de la tienne.</p>
           </div>
-          <div className="project-deck" aria-label="Éventail des cinq projets, rotation automatique toutes les dix secondes">
+          <div className="project-deck" aria-label="Éventail des cinq projets, rotation automatique toutes les cinq secondes">
             {projects.map((project, index) => {
               const relativeIndex = (index - activeProjectIndex + projects.length) % projects.length;
               const center = (projects.length - 1) / 2;
@@ -211,7 +211,7 @@ function Index() {
               );
             })}
           </div>
-          <p className="project-deck-hint"><span className="project-deck-indicator" /> Les projets défilent automatiquement toutes les 10 secondes</p>
+          <p className="project-deck-hint"><span className="project-deck-indicator" /> Les projets défilent automatiquement toutes les 5 secondes</p>
         </div>
       </section>
 
