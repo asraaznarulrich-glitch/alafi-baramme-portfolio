@@ -188,7 +188,7 @@ function Index() {
                   key={project.name}
                   style={{
                     zIndex: relativeIndex + 1,
-                    transform: `translateX(calc(${position} * var(--fan-step))) translateY(calc(abs(${position}) * 5px)) rotate(${position * 5}deg)`,
+                    transform: `translateX(${position * 215}px) translateY(${Math.abs(position) * 5}px) rotate(${position * 4}deg)`,
                   }}
                   aria-hidden={relativeIndex !== 0}
                 >
