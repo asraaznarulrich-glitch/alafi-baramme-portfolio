@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Code2, Video, Sparkles, Mail, Github, Instagram, Youtube } from "lucide-react";
+import { ArrowUpRight, Code2, Video, Sparkles, Mail, Github, Instagram, Youtube, X } from "lucide-react";
 
 import { checkApiHealth } from "@/lib/api";
 
@@ -72,6 +72,7 @@ const questions = [
 
 function Index() {
   const [apiOnline, setApiOnline] = useState<boolean | null>(null);
+  const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -152,14 +153,14 @@ function Index() {
           </div>
           <div className="project-grid">
             {projects.map((project, index) => (
-              <article className="project-card" key={project.name}>
+              <article className="project-card" key={project.name} style={{ animationDelay: `${index * 100}ms` }}>
                 <div className="project-topline"><span>0{index + 1}</span><span>{project.type}</span></div>
-                <div className="project-symbol">{index === 0 ? <Code2 size={27} /> : <Sparkles size={27} />}</div>
+                <div className="project-symbol">{index === 0 ? <Code2 size={27} /> : index === 1 ? <Sparkles size={27} /> : <Code2 size={27} />}</div>
                 <h3>{project.name}</h3>
                 <p className="project-tagline">{project.tagline}</p>
                 <p className="project-description">{project.description}</p>
                 <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                <div className="project-footer"><span>{project.host}</span><a href={project.url} target="_blank" rel="noreferrer">Visiter le projet <ArrowUpRight size={16} /></a></div>
+                <div className="project-footer"><span>{project.host}</span><div className="project-actions"><button type="button" className="project-details-button" onClick={() => setSelectedProject(project)}>Voir les détails <ArrowUpRight size={15} /></button><a href={project.url} target="_blank" rel="noreferrer">Visiter <ArrowUpRight size={16} /></a></div></div>
               </article>
             ))}
           </div>
